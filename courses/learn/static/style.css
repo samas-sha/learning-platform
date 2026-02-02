@@ -1,0 +1,33 @@
+/* Simple Bootstrap 5 theme for the public site */
+body {
+    background: #f8f9fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+.navbar {
+    background: #1a237e;
+}
+.navbar-brand, .nav-link, .navbar-text {
+    color: #fff !important;
+}
+.container {
+    margin-top: 40px;
+}
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #0001;
+    transition: box-shadow 0.2s;
+}
+.card:hover {
+    box-shadow: 0 4px 16px #0002;
+}
+.card-title {
+    color: #1a237e;
+    font-weight: 600;
+}
+.btn-primary {
+    background: #1a237e;
+    border: none;
+}
+.btn-primary:hover {
+    background: #3949ab;
+}
