@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ course.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="course-hero mb-4">
+        <div class="row align-items-center">
+          <div class="col-md-4 mb-3 mb-md-0">
+            {% if course.thumbnail %}
+            <img src="{{ course.thumbnail.url }}" class="img-fluid rounded shadow" alt="{{ course.title }}">
+            {% else %}
+            <div class="bg-white bg-opacity-25 rounded d-flex align-items-center justify-content-center" style="height: 180px;">
+              <i class="bi bi-journal-bookmark-fill display-1"></i>
+            </div>
+            {% endif %}
+          </div>
+          <div class="col-md-8">
+            <span class="badge mb-2">{{ course.get_level_display }}</span>
+            {% if course.category %}
+            <span class="badge bg-white bg-opacity-25 mb-2">{{ course.category.name }}</span>
+            {% endif %}
+            <h1 class="h2 fw-bold mb-2">{{ course.title }}</h1>
+            <p class="mb-2 opacity-90">{{ course.description|truncatewords:30 }}</p>
+            <div class="d-flex flex-wrap gap-3 small">
+              <span><i class="bi bi-collection me-1"></i>{{ course.lesson_count }} lessons</span>
+              <span><i class="bi bi-clock me-1"></i>{{ course.total_duration_display }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm rounded-3 mb-4">
+        <div class="card-header bg-white border-0 py-3">
+          <h5 class="mb-0"><i class="bi bi-list-ol me-2"></i>Curriculum</h5>
+        </div>
+        <div class="card-body p-0">
+          <ul class="list-group list-group-flush">
+            {% for lesson in lessons %}
+            <li class="list-group-item d-flex align-items-center">
+              <span class="badge bg-secondary me-2">{{ forloop.counter }}</span>
+              {{ lesson.title }}
+            </li>
+            {% empty %}
+            <li class="list-group-item text-muted">No lessons yet.</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm rounded-3 sticky-top" style="top: 90px;">
+        <div class="card-body p-4">
+          <h5 class="card-title mb-3">Start learning</h5>
+          <p class="text-muted small mb-3">Enroll for free and get access to all lessons.</p>
+          {% if user.is_authenticated %}
+            {% if user_enrolled %}
+            <a href="{% url 'enrollments:my_learning' %}" class="btn btn-success w-100 mb-2">
+              <i class="bi bi-check-circle me-2"></i>Go to My Learning
+            </a>
+            {% else %}
+            <a href="{% url 'enrollments:enroll' course.slug %}" class="btn btn-primary w-100 mb-2">
+              <i class="bi bi-plus-circle me-2"></i>Enroll Now
+            </a>
+            {% endif %}
+          {% else %}
+          <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="btn btn-primary w-100 mb-2">Login to Enroll</a>
+          <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary w-100">Sign Up</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

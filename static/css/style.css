@@ -1,0 +1,166 @@
+/* LearnHub – Learning Platform Branding */
+
+:root {
+  --learnhub-primary: #0d6efd;
+  --learnhub-dark: #1a1d23;
+  --learnhub-card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --learnhub-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --learnhub-radius: 12px;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: var(--learnhub-dark);
+  background-color: #f8f9fa;
+}
+
+.min-vh-content {
+  min-height: calc(100vh - 180px);
+}
+
+/* Navbar */
+.navbar-brand:hover {
+  opacity: 0.9;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+/* Course cards */
+.course-card {
+  border: none;
+  border-radius: var(--learnhub-radius);
+  overflow: hidden;
+  box-shadow: var(--learnhub-card-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--learnhub-card-hover);
+}
+
+.course-card .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+.course-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card .card-title {
+  font-weight: 600;
+  color: var(--learnhub-dark);
+  line-height: 1.3;
+}
+
+.course-card .badge {
+  font-weight: 500;
+}
+
+/* Course detail hero */
+.course-hero {
+  background: linear-gradient(135deg, var(--learnhub-primary) 0%, #0a58ca 100%);
+  color: white;
+  border-radius: var(--learnhub-radius);
+  padding: 2rem;
+}
+
+.course-hero .badge {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Progress bars */
+.progress-bar-custom {
+  height: 8px;
+  border-radius: 4px;
+  background-color: #e9ecef;
+}
+
+.progress-bar-custom .progress-bar {
+  border-radius: 4px;
+}
+
+/* Lesson list */
+.lesson-list-item {
+  border-left: 3px solid transparent;
+  padding: 0.75rem 1rem;
+  transition: background 0.15s ease;
+}
+
+.lesson-list-item:hover {
+  background-color: #f8f9fa;
+}
+
+.lesson-list-item.completed {
+  border-left-color: #198754;
+  background-color: #f0f9f4;
+}
+
+.lesson-list-item.current {
+  border-left-color: var(--learnhub-primary);
+  background-color: #e7f1ff;
+}
+
+/* Buttons */
+.btn-primary {
+  font-weight: 600;
+}
+
+.btn-outline-primary:hover {
+  transform: translateY(-1px);
+}
+
+/* Video embed */
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--learnhub-radius);
+  background: #000;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Auth pages */
+.auth-card {
+  border: none;
+  border-radius: var(--learnhub-radius);
+  box-shadow: var(--learnhub-card-shadow);
+}
+
+/* My Learning dashboard */
+.learning-card {
+  border: none;
+  border-radius: var(--learnhub-radius);
+  box-shadow: var(--learnhub-card-shadow);
+  transition: box-shadow 0.2s ease;
+}
+
+.learning-card:hover {
+  box-shadow: var(--learnhub-card-hover);
+}
+
+/* Footer links */
+footer a:hover {
+  color: #fff !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .course-card .card-img-top {
+    height: 160px;
+  }
+}
